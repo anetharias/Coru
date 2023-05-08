@@ -1,0 +1,87 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: node:10.15.3
+
+pipelines:
+  branches:
+   develop:
+     - step:         
+         script:
+           - apt-get update                                            
+           - apt-get install -y zip
+           - zip -r application.zip .
+           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+             variables:
+               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_EBS
+               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_EBS
+               AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+               APPLICATION_NAME: $APPLICATION_NAME
+               S3_BUCKET: $S3_BUCKET_DEV
+               COMMAND: 'upload-only'
+               ZIP_FILE: 'application.zip'
+               VERSION_LABEL: 'kanda-source-$BITBUCKET_BUILD_NUMBER'
+           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+             variables:
+               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_EBS
+               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_EBS
+               AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+               APPLICATION_NAME: $APPLICATION_NAME
+               WAIT: 'true'
+               COMMAND: 'deploy-only'
+               ENVIRONMENT_NAME: $ENVIRONMENT_NAME
+               VERSION_LABEL: 'kanda-source-$BITBUCKET_BUILD_NUMBER'
+   staging:
+     - step:         
+         script:
+           - apt-get update                                            
+           - apt-get install -y zip
+           - zip -r application.zip .
+           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+             variables:
+               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_EBS
+               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_EBS
+               AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+               APPLICATION_NAME: Kanda
+               S3_BUCKET: $S3_BUCKET_DEV
+               COMMAND: 'upload-only'
+               ZIP_FILE: 'application.zip'
+               VERSION_LABEL: 'kanda-source-$BITBUCKET_BUILD_NUMBER'
+           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+             variables:
+               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_EBS
+               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_EBS
+               AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+               APPLICATION_NAME: Kanda
+               WAIT: 'true'
+               COMMAND: 'deploy-only'
+               ENVIRONMENT_NAME: kandaFront-Nodestg
+               VERSION_LABEL: 'kanda-source-$BITBUCKET_BUILD_NUMBER'
+   ebs-prod:
+     - step:         
+         script:
+           - apt-get update                                            
+           - apt-get install -y zip
+           - zip -r application.zip .
+           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+             variables:
+               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_EBS
+               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_EBS
+               AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+               APPLICATION_NAME: 'Kanda'
+               S3_BUCKET: $S3_BUCKET_DEV
+               COMMAND: 'upload-only'
+               ZIP_FILE: 'application.zip'
+               VERSION_LABEL: 'kanda-source-$BITBUCKET_BUILD_NUMBER'
+           - pipe: atlassian/aws-elasticbeanstalk-deploy:0.5.0
+             variables:
+               AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID_EBS
+               AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY_EBS
+               AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+               APPLICATION_NAME: 'Kanda'
+               WAIT: 'true'
+               COMMAND: 'deploy-only'
+               ENVIRONMENT_NAME: 'kandaFront-NodeProd'
+               VERSION_LABEL: 'kanda-source-$BITBUCKET_BUILD_NUMBER'

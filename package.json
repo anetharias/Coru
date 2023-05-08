@@ -1,0 +1,111 @@
+{
+  "name": "kanda-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.4.7",
+    "@coreui/react": "^4.1.2",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.3",
+    "@material/textfield": "^14.0.0",
+    "@mui/material": "^5.8.3",
+    "@react-hook/window-size": "^3.0.7",
+    "@react-pdf/font": "2.2.0",
+    "@react-pdf/renderer": "2.1.0",
+    "@testing-library/react": "^11.1.0",
+    "bootstrap": "^5.1.0",
+    "chart.js": "^3.8.0",
+    "fontkit": "^2.0.2",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.5",
+    "gsap": "^3.8.0",
+    "jquery-1.8": "^1.8.3",
+    "lodas": "^1.2.0",
+    "lodash": "^4.17.21",
+    "mathjs": "10.4.0",
+    "moment": "^2.29.4",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-awesome-slider": "^4.1.0",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-chartjs-2": "^4.2.0",
+    "react-circular-progressbar": "^2.0.4",
+    "react-currency-input-field": "^3.6.4",
+    "react-dom": "^17.0.2",
+    "react-elastic-carousel": "^0.11.5",
+    "react-favicon": "^1.0.1",
+    "react-ga": "^3.3.0",
+    "react-gtm-module": "^2.0.11",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "7.21.2",
+    "react-icons": "^4.4.0",
+    "react-is": "^16.8",
+    "react-jsx-parser": "^1.28.4",
+    "react-number-format": "^4.9.1",
+    "react-phone-input-2": "^2.15.1",
+    "react-qr-code": "^2.0.8",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-slick": "^0.29.0",
+    "react-tooltip": "^4.2.21",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.0.0",
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start --max-old-space-size=7168",
+    "build": "react-scripts build --max-old-space-size=7168",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "homepage": "/kanda",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/eslint-parser": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-html": "^6.1.2",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.3.2",
+    "prettier-eslint": "^13.0.0"
+  },
+  "resolutions": {
+    "@react-pdf/font": "2.2.0"
+  },
+  "overrides": {
+    "@react-pdf/font": "2.2.1",
+    "@react-pdf/pdfkit": "2.1.0"
+  }
+}
